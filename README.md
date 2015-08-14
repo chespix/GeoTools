@@ -1,7 +1,7 @@
 # GeoTools
  <b>set of dockerized and fast deployable tools for the digital cartographer.</b>
  
- You need vagrant and virtual box installed. If windows host, you need rsync as well. You can install sygwin which provides rsync among other unix tools.<br>
+ You need vagrant and virtual box installed. If windows host, you need rsync as well. You can install cygwin which provides rsync among other unix tools.<br>
  Just git clone, or download as zip. Then, run "vagrant up" inside the vagrant folder.
  That's it! 
  
@@ -13,7 +13,7 @@
  http://localhost:8000/tiles-world-utfgrid/map/<br>
   You can put .MBTiles maps on the "TilehutMaps" folder in order to see them in tilehut.
  
-<b> Your timemill server is running on </b><br>
+<b> Your tilemill server is running on </b><br>
  http://localhost:20008<br>
  http://localhost:20009<br>
  You can put files in "TilemillMaps" in order to access them from tilemill.
