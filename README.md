@@ -1,6 +1,8 @@
 # GeoTools
  set of dockerized and fast deployable tools for the digital cartographer.
  
+ You need vagrant and virtual box installed. If windows host, you need rsync as well. You can install sygwin which provides rsync among other unix tools.
+ 
  Just git clone, or download as zip. Then, run "vagrant up" inside the vagrant folder.
  That's it! 
  
