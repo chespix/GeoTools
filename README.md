@@ -13,7 +13,7 @@
  http://localhost:8000/tiles-world-utfgrid/map/<br>
   You can put .MBTiles maps on the "TilehutMaps" folder in order to see them in tilehut.
  
-<b> Your timemill server is running on </b><br>
+<b> Your tilemill server is running on </b><br>
  http://localhost:20008<br>
  http://localhost:20009<br>
  You can put files in "TilemillMaps" in order to access them from tilemill.
