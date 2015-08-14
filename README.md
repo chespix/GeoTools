@@ -18,7 +18,7 @@
  http://localhost:20009<br>
  You can put files in "TilemillMaps" in order to access them from tilemill.
  
- <h3>Sources </h3><br>
+ <h3>Sources </h3>
  Tilehut source: https://github.com/b-g/tilehut<br>
  Tilemill source: https://github.com/mapbox/tilemill
  
