@@ -7,11 +7,10 @@
  
  You tilehut server is running on <br>
  http://localhost:80000<br>
- To access demo maps, try:
+ To access demo maps, try:<br>
  http://localhost:8000/tiles-world-simple/map/<br>
  http://localhost:8000/tiles-world-vector/map/<br>
  http://localhost:8000/tiles-world-utfgrid/map/<br>
- 
   You can put .MBTiles maps on the "TilehutMaps" folder in order to see them in tilehut.
  
  Your timemill server is running on <br>
