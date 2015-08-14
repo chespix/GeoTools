@@ -1,0 +1,45 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Specify Vagrant version and Vagrant API version
+Vagrant.require_version ">= 1.6.0"
+VAGRANTFILE_API_VERSION = "2"
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
+DOCKER_HOST_NAME = "dockerhost"
+DOCKER_HOST_VAGRANTFILE = "./DockerHostVagrantfile"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+ 
+#create a sub-configure for the tilehut docker container
+  config.vm.define "tilehut" do |th|
+	th.vm.synced_folder "../TilehutMaps", "/src/data"
+	th.vm.network "forwarded_port",
+       guest: 8000, host: 8000
+	#Create docker provider for tilehut and configure
+	th.vm.provider "docker" do |docker|
+		docker.vagrant_machine = "#{DOCKER_HOST_NAME}"
+		docker.vagrant_vagrantfile = "#{DOCKER_HOST_VAGRANTFILE}"
+		docker.image = "dharmatecgeo/tilehut"
+		docker.ports = ['8000:8000']
+		docker.name = 'tilehut-container'
+	end
+  end
+  
+  #create a sub-configure for the tilemill docker container
+  config.vm.define "tilemill" do |tm|
+	tm.vm.synced_folder "../TilemillMaps", "/src/data"
+	tm.vm.network "forwarded_port",
+       guest: 20008, host: 20008
+	tm.vm.network "forwarded_port",
+       guest: 20009, host: 20009
+	#Create docker provider for tilemill and configure
+	tm.vm.provider "docker" do |docker|
+		docker.vagrant_machine = "#{DOCKER_HOST_NAME}"
+		docker.vagrant_vagrantfile = "#{DOCKER_HOST_VAGRANTFILE}"
+		docker.image = "dharmatecgeo/tilemill"
+		docker.ports = ['20008:20008','20009:20009']
+		docker.name = 'tilemill-container'
+	end
+  end
+  
+end

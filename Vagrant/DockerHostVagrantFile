@@ -1,0 +1,28 @@
+Vagrant.configure("2") do |config|
+ 
+  config.vm.provision "docker"
+  
+  ENV["VAGRANT_DETECTED_OS"] = ENV["VAGRANT_DETECTED_OS"].to_s + " cygwin"
+ 
+  # The following line terminates all ssh connections. Therefore
+  # Vagrant will be forced to reconnect.
+  # That's a workaround to have the docker command in the PATH
+  config.vm.provision "shell", inline:
+    "ps aux | grep 'sshd:' | awk '{print $2}' | xargs kill"
+
+	config.vm.synced_folder "../SharedHost", "/home/core/share", id: "core", type: "rsync", rsync__auto: "true"
+ 
+  config.vm.define "dockerhost"
+  config.vm.box = "yungsang/coreos"
+  config.vm.network "forwarded_port",
+    guest: 8000, host: 8000
+  config.vm.network "forwarded_port",
+    guest: 20009, host: 20008
+  config.vm.network "forwarded_port",
+    guest: 20009, host: 20009
+ 
+  config.vm.provider :virtualbox do |vb|
+      vb.name = "dockerhost"
+  end
+ 
+end
